@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script type="text/javascript">
+       
+      $(function () {
+        $("#getproducts").click(function () {
+          var url = "http://localhost:3333/Ekart/product-api/products";
+          $.getJSON(url, function (data) {
+            console.table(data);
+            var productinf
+from Naushad Akhtar to everyone:    4:26 PM
+var productinfo = "";
+            $.each(data, function (key, value) {
+              productinfo += "<tr>";
+              productinfo += "<td>" + value.productId + "</td>";
+              productinfo += "<td>" + value.name + "</td>";
+              productinfo += '</tr>';
+            });
+            $("#products").append(productinfo);
+           
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Welcome To Ekart Application</h1>
+    <button id="getproducts">Get Products</button>
+    <div id="productlist">
+      <table id="products" class="table table-striped">
+        <tr>
+          <th>Product Id</th>
+          <th>Name</th>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
